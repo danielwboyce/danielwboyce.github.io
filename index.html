@@ -29,6 +29,18 @@
       html {
         scroll-behavior: smooth;
       }
+      
+      .conditionalHoverTranslate {}
+      
+      @media screen and (min-width: 1500px) {
+        .conditionalHoverTranslate {
+          transition: transform 0.3s ease-out;
+        }
+        
+        .conditionalHoverTranslate:hover {
+          transform: translateY(5px);
+        }
+      }
 
       #navbar {
         position: fixed;
@@ -49,11 +61,6 @@
         color: var(--navbar-text);
         text-decoration: none;
         padding: 25px;
-        transition: transform 0.3s ease-out;
-      }
-
-      #navbar a:hover {
-        transform: translateY(5px);
       }
 
       main {
@@ -195,10 +202,6 @@
         box-shadow: 1px 2px 0 0 rgba(0, 0, 0, 0.1);
       }
 
-      .project-tile:hover {
-        background-color: var(--project-tile-background-hover);
-      }
-
       .thumbnail {
         width: 100%;
         max-width: 400px;
@@ -225,9 +228,16 @@
         box-shadow: 1px 2px 0 0 rgba(0, 0, 0, 0.1);
       }
 
-      #see-all:hover {
-        background: hsl(0, 0%, 20%);
-        background-color: var(--project-tile-background-hover);
+       @media screen and (min-width: 1500px) {
+        .project-tile:hover {
+          background-color: var(--project-tile-background-hover);
+        }
+        
+        #see-all:hover {
+          background: hsl(0, 0%, 20%);
+          background-color: var(--project-tile-background-hover);
+        }
+        
       }
 
       #contact {
@@ -274,22 +284,21 @@
         font-size: 20px;
         font-weight: 400;
         margin: 0px 10px 0px 10px;
-        transition: transform 0.3s ease-out;
         color: hsl(180, 3%, 90%);
         color: var(--contact-text);
         text-shadow: 2px 4px rgba(0, 0, 0, 0.1);
       }
 
-      .contact-item:hover {
-        transform: translateY(5px);
-      }
-
       @media screen and (max-width: 580px) {
         #contact-container {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-template-rows: 1fr 1fr;
-          grid-template areas: "LinkedIn" "freeCodeCamp" "Email" "Phone";
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr 1fr 1fr;
+          grid-template areas: 
+            "LinkedIn"
+            "freeCodeCamp" 
+            "Email" 
+            "Phone";
           width: 80%;
           margin: 20px auto 0px auto;
           justify-items: center;
@@ -337,9 +346,9 @@
   <body translate="no">
     <header>
       <nav id="navbar">
-        <a href="#welcome-section">About</a>
-        <a href="#projects-anchor">Projects</a>
-        <a href="#contact">Contact</a>
+        <a class="conditionalHover" href="#welcome-section">About</a>
+        <a class="conditionalHover" href="#projects-anchor">Projects</a>
+        <a class="conditionalHover" href="#contact">Contact</a>
       </nav>
     </header>
     <main>
@@ -388,19 +397,19 @@
         <h1>Contact Me</h1>
         <p>Let's work together</p>
         <div id="contact-container">
-          <a class="contact-item" href="https://www.linkedin.com/in/daniel-boyce-234410170/" target="_blank" id="LinkedIn">
+          <a class="contact-item conditionalHoverTranslate" href="https://www.linkedin.com/in/daniel-boyce-234410170/" target="_blank" id="LinkedIn">
           <i class="fab fa-linkedin"></i>
           LinkedIn
         </a>
-          <a class="contact-item" href="https://www.freecodecamp.org/danielwboyce" target="_blank" id="profile-link">
+          <a class="contact-item conditionalHoverTranslate" href="https://www.freecodecamp.org/danielwboyce" target="_blank" id="profile-link">
           <i class="fab fa-free-code-camp"></i>
           freeCodeCamp
         </a>
-          <a class="contact-item" href="mailto:danielwboyce@gmail.com" target="_blank" id="Email">
+          <a class="contact-item conditionalHoverTranslate" href="mailto:danielwboyce@gmail.com" target="_blank" id="Email">
           <i class="fas fa-paper-plane"></i>
           Email
         </a>
-          <a class="contact-item" href="tel:805-914-7378" target="_blank" id="Phone">
+          <a class="contact-item conditionalHoverTranslate" href="tel:805-914-7378" target="_blank" id="Phone">
           <i class="fas fa-voicemail"></i>
           Call or text
         </a>

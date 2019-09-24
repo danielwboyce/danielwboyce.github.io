@@ -1,0 +1,414 @@
+<DOCTYPE! html>
+  <html lang="en">
+    
+  <head>
+    <script src="https://kit.fontawesome.com/58737f1cb4.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway|Permanent+Marker|Caveat&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Personal Portfolio of Daniel Boyce</title>
+    <style>
+      :root {
+        font-family: "Raleway", sans-serif;
+
+        --navbar-background: hsl(0, 0%, 15%);
+        --navbar-text: hsl(168, 28%, 84%);
+        --welcome-background: hsl(0, 0%, 27%);
+        --welcome-main-text: hsl(180, 3%, 90%);
+        --welcome-subtext: hsl(168, 28%, 84%);
+        --projects-background: hsl(219, 81%, 31%);
+        --projects-text: hsl(180, 3%, 90%);
+        --project-tile-background: hsl(0, 0%, 27%);
+        --project-tile-background-hover: hsl(0, 0%, 20%);
+        --project-tile-text: hsl(168, 28%, 84%);
+        --contact-background: hsl(246, 40%, 31%);
+        --contact-text: hsl(180, 3%, 90%);
+        --footer-background: hsl(189, 31%, 62%);
+        --footer-text: hsl(0, 0%, 15%);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      #navbar {
+        position: fixed;
+        display: flex;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 10vh;
+        justify-content: flex-end;
+        z-index: 100;
+        background-color: hsl(0, 0%, 15%);
+        background-color: var(--navbar-background);
+        box-shadow: 0 2px rgba(0, 0, 0, 0.1);
+      }
+
+      #navbar a {
+        color: hsl(168, 28%, 84%);
+        color: var(--navbar-text);
+        text-decoration: none;
+        padding: 25px;
+        transition: transform 0.3s ease-out;
+      }
+
+      #navbar a:hover {
+        transform: translateY(5px);
+      }
+
+      main {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: auto;
+        width: 100%;
+      }
+
+      #welcome-section {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "headshot introduction";
+        background-color: hsl(0, 0%, 27%);
+        background-color: var(--welcome-background);
+        box-shadow: 0 2px rgba(0, 0, 0, 0.1);
+        z-index: 8;
+      }
+
+      #headshot-container {
+        grid-area: headshot;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #headshot-image {
+        height: 70vh;
+        background-color: hsl(180, 3%, 90%);
+        background-color: var(--welcome-main-text);
+        padding: 10px;
+      }
+
+      #welcome-container {
+        grid-area: introduction;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #welcome-container h1 {
+        font-family: "Permanent Marker", sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        margin-bottom: 0px;
+        color: hsl(180, 3%, 90%);
+        color: var(--welcome-main-text);
+      }
+
+      #welcome-container p {
+        font-size: 16px;
+        font-weight: 400;
+        color: hsl(168, 28%, 84%);
+        color: var(--welcome-subtext);
+      }
+
+      @media screen and (max-width: 800px) {
+        #welcome-section {
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr;
+          grid-template-areas: "introduction";
+        }
+
+        #headshot-container {
+          display: none;
+        }
+      }
+
+      #projects {
+        position: relative;
+        background-color: hsl(219, 81%, 31%);
+        background-color: var(--projects-background);
+        color: hsl(180, 3%, 90%);
+        color: var(--projects-text);
+        padding: 1px 25px 0 25px;
+        display: flex;
+        flex-flow: column;
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1);
+        z-index: 6;
+      }
+
+      .anchor {
+        position: relative;
+        visibility: hidden;
+        top: -10vh;
+      }
+
+      #projects h1 {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 400;
+      }
+
+      #projects-list {
+        width: 100%;
+        heigth: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "one two three" "four five six";
+        grid-column-gap: 25px;
+        grid-row-gap: 20px;
+        justify-items: center;
+      }
+
+      @media screen and (max-width: 1000px) {
+        #projects-list {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          grid-template-areas: "one two" "three four";
+        }
+      }
+
+      @media screen and (max-width: 700px) {
+        #projects-list {
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr 1fr 1fr;
+          grid-template-areas: "one" "two" "three" "four";
+        }
+      }
+
+      .project-tile {
+        max-width: 365px;
+        min-width: 200px;
+        width: 100%;
+        border-radius: 3px;
+        background-color: hsl(0, 0%, 27%);
+        background-color: var(--project-tile-background);
+        padding: 7px 7px 0px 7px;
+        flex-shrink: 1;
+        box-shadow: 1px 2px 0 0 rgba(0, 0, 0, 0.1);
+      }
+
+      .project-tile:hover {
+        background-color: var(--project-tile-background-hover);
+      }
+
+      .thumbnail {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 3px;
+        margin-bottom: -5px;
+      }
+
+      .project-tile a {
+        text-decoration: none;
+        text-align: center;
+        color: hsl(168, 28%, 84%);
+        color: var(--project-tile-text);
+      }
+
+      #see-all {
+        padding: 20px;
+        background-color: hsl(0, 0%, 27%);
+        background-color: var(--project-tile-background);
+        border-radius: 7px;
+        color: hsl(168, 28%, 84%);
+        color: var(--project-tile-text);
+        text-decoration: none;
+        margin: 40px auto 30px auto;
+        box-shadow: 1px 2px 0 0 rgba(0, 0, 0, 0.1);
+      }
+
+      #see-all:hover {
+        background: hsl(0, 0%, 20%);
+        background-color: var(--project-tile-background-hover);
+      }
+
+      #contact {
+        position: relative;
+        height: 85vh;
+        background-color: hsl(246, 40%, 31%);
+        background-color: var(--contact-background);
+        padding-top: 1px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1);
+        z-index: 4;
+      }
+
+      #contact h1 {
+        text-align: center;
+        font-weight: 400;
+        font-size: 45px;
+        margin-bottom: 0px;
+        color: hsl(180, 3%, 90%);
+        color: var(--contact-text);
+        text-shadow: 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      #contact p {
+        text-align: center;
+        font-weight: 400;
+        font-size: 20px;
+        margin-bottom: 30px;
+        color: hsl(180, 3%, 90%);
+        color: var(--contact-text);
+        text-shadow: 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      #contact-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .contact-item {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 400;
+        margin: 0px 10px 0px 10px;
+        transition: transform 0.3s ease-out;
+        color: hsl(180, 3%, 90%);
+        color: var(--contact-text);
+        text-shadow: 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-item:hover {
+        transform: translateY(5px);
+      }
+
+      @media screen and (max-width: 580px) {
+        #contact-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          grid-template areas: "LinkedIn" "freeCodeCamp" "Email" "Phone";
+          width: 80%;
+          margin: 20px auto 0px auto;
+          justify-items: center;
+          grid-row-gap: 20px;
+        }
+
+        #LinkedIn {
+          grid-area: "LinkedIn";
+        }
+
+        #profile-link {
+          grid-area: "freeCodeCamp";
+        }
+
+        #Email {
+          grid-area: "Email";
+        }
+
+        #Phone {
+          grid-area: "Phone";
+        }
+      }
+
+      footer {
+        position: relative;
+        width: 100%;
+        height: 5vh;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: hsl(189, 31%, 62%);
+        background-color: var(--footer-background);
+        color: hsl(0, 0%, 15%);
+        color: var(--footer-text);
+        z-index: 2;
+      }
+
+      footer p {
+        padding-right: 10px;
+      }
+    </style>
+  </head>
+
+  <body translate="no">
+    <header>
+      <nav id="navbar">
+        <a href="#welcome-section">About</a>
+        <a href="#projects-anchor">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+    <main>
+      <section id="welcome-section">
+        <div id="headshot-container">
+          <img src="https://scontent.faus1-1.fna.fbcdn.net/v/t1.0-9/18671042_10207179268279018_6496062853452497392_n.jpg?_nc_cat=108&_nc_oc=AQlFtSrZSZ9xYIaLXyDvq4zFkuBXov3U8V6wz0OyAY1hrs77VwsmcdQCjkf7GkKpG3grmmGyeIT8Whe9j0Xn8f_q&_nc_ht=scontent.faus1-1.fna&oh=c11e85766ff57deda7ee8968bb0079e7&oe=5E3796B0"
+            id="headshot-image" alt="Headshot of Daniel Boyce">
+        </div>
+        <div id="welcome-container">
+          <h1>Hi, I'm Daniel Boyce</h1>
+          <p>take a look at some of my work</p>
+        </div>
+      </section>
+      <section id="projects">
+        <div class="anchor" id="projects-anchor"></div>
+        <h1>Projects</h1>
+        <div id="projects-list">
+          <div class="project-tile" style="grid-area: one;">
+            <a href="https://codepen.io/danielwboyce/pen/zYOJoZQ" target="_blank">
+            <img class="thumbnail" src="https://screenshot.codepen.io/3505322.BaBvvEe.3a060222-cbca-4b13-b643-c21b2e25d27f.png"></img>
+        <p>Sample Product Landing Page</p>
+        </a>
+          </div>
+          <div class="project-tile" style="grid-area: two;">
+            <a href="https://codepen.io/danielwboyce/pen/zYOJoZQ" target="_blank">
+            <img class="thumbnail" src="https://screenshot.codepen.io/3505322.jONdmEP.e32ef9d9-cd0b-4377-a40b-b561d0a85042.png"></img>
+        <p>Sample Technical Documentation Page</p>
+        </a>
+          </div>
+          <div class="project-tile" style="grid-area: three;">
+            <a href="https://codepen.io/danielwboyce/pen/zYOJoZQ" target="_blank">
+            <img class="thumbnail" src="https://screenshot.codepen.io/3505322.aboXWdL.8b8830f6-7f15-455e-bc79-0f36bc5f0e7e.png"></img>
+        <p>Sample Survey Form</p>
+        </a>
+          </div>
+          <div class="project-tile" style="grid-area: four;">
+            <a href="https://codepen.io/danielwboyce/pen/zYOJoZQ" target="_blank">
+            <img class="thumbnail" src="https://screenshot.codepen.io/3505322.KKPJmzV.928725bc-0298-418b-b00f-2247942f1b49.png"></img>
+        <p>Sample Personal Tribute Page</p>
+        </a>
+          </div>
+        </div>
+        <a id="see-all" href="https://github.com/danielwboyce" target="_blank">See more</a>
+      </section>
+      <section id="contact">
+        <h1>Contact Me</h1>
+        <p>Let's work together</p>
+        <div id="contact-container">
+          <a class="contact-item" href="https://www.linkedin.com/in/daniel-boyce-234410170/" target="_blank" id="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+          LinkedIn
+        </a>
+          <a class="contact-item" href="https://www.freecodecamp.org/danielwboyce" target="_blank" id="profile-link">
+          <i class="fab fa-free-code-camp"></i>
+          freeCodeCamp
+        </a>
+          <a class="contact-item" href="mailto:danielwboyce@gmail.com" target="_blank" id="Email">
+          <i class="fas fa-paper-plane"></i>
+          Email
+        </a>
+          <a class="contact-item" href="tel:805-914-7378" target="_blank" id="Phone">
+          <i class="fas fa-voicemail"></i>
+          Call or text
+        </a>
+        </div>
+      </section>
+      <footer>
+        <p><i class="far fa-copyright"></i> Daniel Boyce 2019</p>
+      </footer>
+    </main>
+  </body>
+  </html

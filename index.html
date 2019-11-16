@@ -5,11 +5,11 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Personal Portfolio of Daniel Boyce">
     <meta property="og:description" content="A portfolio showing off just some of the work Daniel Boyce has done.">
-    <meta property="og:image" content="http://danielwboyce.com/img/main-thumbnail.png">
-    <meta property="og:url" content="http://danielwboyce.com/index.htm">
+    <meta property="og:image" content="https://danielwboyce.com/img/main-thumbnail.png">
+    <meta property="og:url" content="https://danielwboyce.com/index.htm">
     <meta name="twitter:title" content="Personal Portfolio of Daniel Boyce">
     <meta name="twitter:description" content="A portfolio showing off just some of the work Daniel Boyce has done.">
-    <meta name="twitter:image" content="http://danielwboyce.com/img/main-thumbnail.png">
+    <meta name="twitter:image" content="https://danielwboyce.com/img/main-thumbnail.png">
     <meta name="twitter:card" content="summary_large_image">
     
     <script src="https://kit.fontawesome.com/58737f1cb4.js" crossorigin="anonymous"></script>
@@ -177,18 +177,19 @@
         heigth: auto;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        grid-template-areas: "one two three" "four five six";
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: "eight seven six" "five four three" "two one zero";
         grid-column-gap: 25px;
         grid-row-gap: 20px;
         justify-items: center;
+        align-items: start;
       }
 
       @media screen and (max-width: 1000px) {
         #projects-list {
           grid-template-columns: 1fr 1fr;
           grid-template-rows: 1fr 1fr;
-          grid-template-areas: "one two" "three four";
+          grid-template-areas: "eight seven" "six five" "four three" "two one";
         }
       }
 
@@ -196,7 +197,7 @@
         #projects-list {
           grid-template-columns: 1fr;
           grid-template-rows: 1fr 1fr 1fr 1fr;
-          grid-template-areas: "one" "two" "three" "four";
+          grid-template-areas: "eight" "seven" "six" "five" "four" "three" "two" "one";
         }
       }
 
@@ -204,6 +205,7 @@
         max-width: 365px;
         min-width: 200px;
         width: 100%;
+        height: auto;
         border-radius: 3px;
         background-color: hsl(0, 0%, 27%);
         background-color: var(--project-tile-background);
@@ -217,6 +219,14 @@
         max-width: 400px;
         border-radius: 3px;
         margin-bottom: -5px;
+      }
+      
+      .thumbnail-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 120px;
+        text-shadow: 5px 5px rgba(0, 0, 0, 0.1);
       }
 
       .project-tile a {
@@ -364,7 +374,7 @@
     <main>
       <section id="welcome-section">
         <div id="headshot-container">
-          <img src="https://scontent.faus1-1.fna.fbcdn.net/v/t1.0-9/18671042_10207179268279018_6496062853452497392_n.jpg?_nc_cat=108&_nc_oc=AQlFtSrZSZ9xYIaLXyDvq4zFkuBXov3U8V6wz0OyAY1hrs77VwsmcdQCjkf7GkKpG3grmmGyeIT8Whe9j0Xn8f_q&_nc_ht=scontent.faus1-1.fna&oh=c11e85766ff57deda7ee8968bb0079e7&oe=5E3796B0"
+          <img src="https://danielwboyce.com/img/headshot.jpg"
             id="headshot-image" alt="Headshot of Daniel Boyce">
         </div>
         <div id="welcome-container">
@@ -376,32 +386,57 @@
         <div class="anchor" id="projects-anchor"></div>
         <h1>Projects</h1>
         <div id="projects-list">
-          <div class="project-tile" style="grid-area: one;">
-            <a href="https://codepen.io/danielwboyce/pen/zYOJoZQ" target="_blank">
-            <img class="thumbnail" src="https://screenshot.codepen.io/3505322.BaBvvEe.3a060222-cbca-4b13-b643-c21b2e25d27f.png"></img>
-        <p>Sample Product Landing Page</p>
+          
+          <div class="project-tile" style="grid-area: eight;">
+            <a href="https://github.com/danielwboyce/python-for-scientific-computing/tree/master/Lab%2007%20--%20The%20Diffusion%20Equation%20and%20Implicit%20Methods" target="_blank">
+            <img class="thumbnail" src="https://danielwboyce.com/img/diffusion-equation-and-implicit-methods.png"></img>
+        <p>Solving the Diffusion Equation with Implicit Methods</p>
         </a>
           </div>
-          <div class="project-tile" style="grid-area: two;">
-            <a href="https://codepen.io/danielwboyce/pen/zYOJoZQ" target="_blank">
-            <img class="thumbnail" src="https://screenshot.codepen.io/3505322.jONdmEP.e32ef9d9-cd0b-4377-a40b-b561d0a85042.png"></img>
-        <p>Sample Technical Documentation Page</p>
+          <div class="project-tile" style="grid-area: seven;">
+            <a href="https://github.com/danielwboyce/python-for-scientific-computing/tree/master/Lab%2007%20--%20The%20Diffusion%20Equation%20and%20Implicit%20Methods" target="_blank">
+            <img class="thumbnail" src="https://danielwboyce.com/img/2d-wave-equation-staggered-leapfrog.png"></img>
+        <p>Animating the 2D Wave Equation with the Staggered Leapfrog Method</p>
+        </a>
+          </div>  
+          <div class="project-tile" style="grid-area: six;">
+            <a href="https://github.com/danielwboyce/python-for-scientific-computing/tree/master/Lab%2011%20--%20One%20Dimensional%20Gas%20Dynamics" target="_blank">
+            <img class="thumbnail" src="https://danielwboyce.com/img/gas-dynamics.png"></img>
+        <p>One-Dimensional Gas Dynamics</p>
         </a>
           </div>
-          <div class="project-tile" style="grid-area: three;">
-            <a href="https://codepen.io/danielwboyce/pen/zYOJoZQ" target="_blank">
-            <img class="thumbnail" src="https://screenshot.codepen.io/3505322.aboXWdL.8b8830f6-7f15-455e-bc79-0f36bc5f0e7e.png"></img>
-        <p>Sample Survey Form</p>
+          <div class="project-tile" style="grid-area: five;">
+            <a href="https://github.com/danielwboyce/python-for-scientific-computing/tree/master/Lab%2004%20--%20The%20Hanging%20Chain%20and%20Quantum%20Bound%20States" target="_blank">
+            <img class="thumbnail" src="https://danielwboyce.com/img/quantum-bound-states.png"></img>
+        <p>Hanging Chains and Quantum Bound States</p>
         </a>
           </div>
           <div class="project-tile" style="grid-area: four;">
             <a href="https://codepen.io/danielwboyce/pen/zYOJoZQ" target="_blank">
-            <img class="thumbnail" src="https://screenshot.codepen.io/3505322.KKPJmzV.928725bc-0298-418b-b00f-2247942f1b49.png"></img>
+            <img class="thumbnail" src="https://danielwboyce.com/img/product-landing-thumbnail.png"></img>
+        <p>Sample Product Landing Page</p>
+        </a>
+          </div>
+          <div class="project-tile" style="grid-area: three;">
+            <a href="https://codepen.io/danielwboyce/pen/zYOJoZQ" target="_blank">
+            <img class="thumbnail" src="https://danielwboyce.com/img/technical-documentation-thumbnail.png"></img>
+        <p>Sample Technical Documentation Page</p>
+        </a>
+          </div>
+          <div class="project-tile" style="grid-area: two;">
+            <a href="https://codepen.io/danielwboyce/pen/zYOJoZQ" target="_blank">
+            <img class="thumbnail" src="https://danielwboyce.com/img/survey-thumbnail.png"></img>
+        <p>Sample Survey Form</p>
+        </a>
+          </div>
+          <div class="project-tile" style="grid-area: one;">
+            <a href="https://codepen.io/danielwboyce/pen/zYOJoZQ" target="_blank">
+            <img class="thumbnail" src="https://danielwboyce.com/img/tribute-thumbnail.png"></img>
         <p>Sample Personal Tribute Page</p>
         </a>
           </div>
         </div>
-        <a id="see-all" href="https://github.com/danielwboyce" target="_blank">See more</a>
+        <a id="see-all" href="https://github.com/danielwboyce?tab=repositories" target="_blank">See more in my GitHub Repositories</a>
       </section>
       <section id="contact">
         <h1>Contact Me</h1>
